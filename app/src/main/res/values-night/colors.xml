@@ -3,4 +3,6 @@
 
     <color name="title">@android:color/white</color>
 
+    <color name="defaultBackground">@android:color/black</color>
+
 </resources>

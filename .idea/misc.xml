@@ -5,6 +5,9 @@
       <map>
         <entry key="app/src/main/res/drawable/bg_avatar_placeholder.xml" value="0.234" />
         <entry key="app/src/main/res/drawable/bg_badge_blue.xml" value="0.234" />
+        <entry key="app/src/main/res/drawable/outline_link_24.xml" value="0.245" />
+        <entry key="app/src/main/res/drawable/outline_location_on_24.xml" value="0.245" />
+        <entry key="app/src/main/res/drawable/outline_person_24.xml" value="0.245" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/fragment_user_detail.xml" value="0.39266304347826086" />
         <entry key="app/src/main/res/layout/fragment_user_list.xml" value="0.4036458333333333" />

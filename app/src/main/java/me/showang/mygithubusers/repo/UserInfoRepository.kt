@@ -4,7 +4,7 @@ import me.showang.mygithubusers.api.ApiFactory
 import me.showang.mygithubusers.model.UserInfo
 import me.showang.respect.suspend
 
-class GithubRepository(private val apiFactory: ApiFactory) {
+class UserInfoRepository(private val apiFactory: ApiFactory) {
 
     private val mUserInfoCache: MutableList<UserInfo> = mutableListOf()
     val userInfoCache: List<UserInfo> get() = mUserInfoCache

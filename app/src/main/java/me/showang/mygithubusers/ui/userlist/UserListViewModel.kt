@@ -9,9 +9,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import me.showang.mygithubusers.model.UserInfo
-import me.showang.mygithubusers.repo.GithubRepository
+import me.showang.mygithubusers.repo.UserInfoRepository
 
-class UserListViewModel(private val repository: GithubRepository) :
+class UserListViewModel(private val repository: UserInfoRepository) :
     TranstateViewModel<UserListViewModel.State>() {
 
     override val initState: State = if (repository.userInfoCache.isEmpty()) {

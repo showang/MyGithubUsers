@@ -9,7 +9,7 @@ class ApiFactory {
         return UsersApi(sinceId)
     }
 
-    fun createUserDetailApi(userName: String): UserDetailApi {
-        return UserDetailApi(userName)
+    fun createUserDetailApi(account: String): UserDetailApi {
+        return UserDetailApi(account)
     }
 }

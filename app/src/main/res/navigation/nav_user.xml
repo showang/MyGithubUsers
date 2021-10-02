@@ -13,10 +13,10 @@
         <action
             android:id="@+id/action_user_list_to_detail"
             app:destination="@id/userDetailFragment"
-            app:enterAnim="@anim/slide_in_right"
+            app:enterAnim="@anim/slide_in_bottom"
             app:exitAnim="@anim/nav_do_nothing"
             app:popEnterAnim="@anim/nav_do_nothing"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:popExitAnim="@anim/slide_out_bottom" />
     </fragment>
 
     <fragment

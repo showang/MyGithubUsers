@@ -4,7 +4,7 @@ data class UserDetail(
     val id: Long,
     val account: String,
     val name: String,
-    val bio: String,
+    val bio: String?,
     val avatarUrl: String,
     val isStaff: Boolean,
     val mail: String?,
