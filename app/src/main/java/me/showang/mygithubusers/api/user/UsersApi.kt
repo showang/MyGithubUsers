@@ -7,7 +7,8 @@ import me.showang.mygithubusers.model.UserInfo
 import me.showang.respect.core.HttpMethod
 import java.lang.reflect.Type
 
-class UsersApi(sinceId: Long? = null, pageSize: Int = 20) : GithubApiBase<List<UserInfo>>() {
+class UsersApi(sinceId: Long? = null, private val pageSize: Int = 20) :
+    GithubApiBase<UsersApi.Result>() {
     override val httpMethod = HttpMethod.GET
     override val url = "$baseUrl/users"
     override val urlQueries: Map<String, String> = mutableMapOf<String, String>().apply {
@@ -16,15 +17,16 @@ class UsersApi(sinceId: Long? = null, pageSize: Int = 20) : GithubApiBase<List<U
     }
     override val headers: Map<String, String> = baseHeaderMap
 
-    override fun parse(bytes: ByteArray): List<UserInfo> {
+    override fun parse(bytes: ByteArray): Result {
         val type: Type = object : TypeToken<List<UserInfoServerEntity>>() {}.type
-        return gson.fromJson<List<UserInfoServerEntity>>(String(bytes), type).map {
+        val infoList = gson.fromJson<List<UserInfoServerEntity>>(String(bytes), type).map {
             it.toModel()
         }
+        return Result(infoList, infoList.size == pageSize)
     }
 
     data class Result(
-        val userInfoList: List<UserInfo>,
+        val infoList: List<UserInfo>,
         val hasNextPage: Boolean
     )
 

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MyGithubUsers</string>
+
+    <string name="btn_retry">Retry</string>
+    <string name="error_init_fail">無法取得資料，請確認網路連是否正常或稍後重試。</string>
+
+    <string name="label_badge_staff">STAFF</string>
 </resources>

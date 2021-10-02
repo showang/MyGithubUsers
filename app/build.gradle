@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -29,6 +30,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
     }
 }
 
@@ -65,6 +69,7 @@ dependencies {
     kapt 'com.github.bumptech.glide:compiler:4.10.0'
 
     /* My GitHub Libraries */
+    implementation 'com.github.showang:Kat:0.0.2'           // Kotlin Android Toolkits
     implementation 'com.github.showang:Respect:0.3.0'       // RESTFul API Framework
     implementation 'com.github.showang:Recyct:0.0.5'        // RecyclerView Framework
 
