@@ -3,7 +3,7 @@ package me.showang.mygithubusers.ui.userdetail
 import me.showang.mygithubusers.api.ApiFactory
 import me.showang.mygithubusers.model.UserDetail
 import me.showang.mygithubusers.model.UserInfo
-import me.showang.mygithubusers.util.async.AsyncDelegate
+import github.showang.transtate.async.AsyncDelegate
 import me.showang.respect.suspend
 
 class UserDetailPresenter(private val apiFactory: ApiFactory, private val asyncDelegate: AsyncDelegate) {

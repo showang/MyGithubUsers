@@ -2,12 +2,11 @@ package me.showang.mygithubusers.ui.userdetail
 
 import io.mockk.*
 import io.mockk.impl.annotations.MockK
-import kotlinx.coroutines.runBlocking
 import me.showang.mygithubusers.api.ApiFactory
 import me.showang.mygithubusers.api.user.UserDetailApi
 import me.showang.mygithubusers.model.UserDetail
 import me.showang.mygithubusers.model.UserInfo
-import me.showang.mygithubusers.util.async.AsyncDelegate
+import me.showang.mygithubusers.ui.AsyncJunit
 import me.showang.respect.suspend
 import org.junit.Before
 import org.junit.Test
@@ -77,14 +76,4 @@ class UserDetailPresenterTest {
     }
 
 
-    class AsyncJunit : AsyncDelegate {
-        override fun background(func: suspend () -> Unit) {
-            runBlocking { func() }
-        }
-
-        override suspend fun updateUi(func: () -> Unit) {
-            func()
-        }
-
-    }
 }

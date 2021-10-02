@@ -73,6 +73,7 @@ class UserListFragment : Fragment() {
                 is UserListViewModel.State.DataLoaded -> {
                     progress.isVisible = false
                     errorLayout.isVisible = false
+                    userInfoList.clear()
                     userInfoList.addAll(state.userInfoList)
                     adapter?.enableLoadMore = state.hasNextPage
                 }

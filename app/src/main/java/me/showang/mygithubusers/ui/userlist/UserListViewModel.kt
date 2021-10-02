@@ -2,17 +2,17 @@ package me.showang.mygithubusers.ui.userlist
 
 import androidx.lifecycle.MutableLiveData
 import github.showang.transtate.TranstateViewModel
+import github.showang.transtate.async.AsyncDelegate
 import github.showang.transtate.core.Transform
 import github.showang.transtate.core.ViewEvent
 import github.showang.transtate.core.ViewState
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.launch
 import me.showang.mygithubusers.model.UserInfo
 import me.showang.mygithubusers.repo.UserInfoRepository
 
-class UserListViewModel(private val repository: UserInfoRepository) :
-    TranstateViewModel<UserListViewModel.State>() {
+class UserListViewModel(
+    private val repository: UserInfoRepository,
+    private val asyncDelegate: AsyncDelegate
+) : TranstateViewModel<UserListViewModel.State>(asyncDelegate) {
 
     override val initState: State = if (repository.userInfoCache.isEmpty()) {
         State.Initializing()
@@ -28,7 +28,7 @@ class UserListViewModel(private val repository: UserInfoRepository) :
     }
 
     fun loadNextPage() {
-        CoroutineScope(IO).launch {
+        asyncDelegate.background {
             try {
                 val page = repository.loadNextPage()
                 startTransform(Event.LoadDataSuccess(page.userInfoList, page.hasNextPage))
@@ -39,7 +39,7 @@ class UserListViewModel(private val repository: UserInfoRepository) :
     }
 
     fun retry() {
-        CoroutineScope(IO).launch {
+        asyncDelegate.background {
             startTransform(Event.StartReload())
             loadNextPage()
         }
