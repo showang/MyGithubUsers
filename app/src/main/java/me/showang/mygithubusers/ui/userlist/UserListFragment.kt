@@ -97,13 +97,17 @@ class UserListFragment : Fragment() {
             // Update new page items by notify item change
             is UserListViewModel.Event.LoadDataSuccess -> {
                 val preSize = userInfoList.size
+                val headerSize = 1
                 userInfoList.addAll(event.newUserInfoList)
                 adapter?.run {
                     enableLoadMore = event.hasNextPage
                     // Update load more item
-                    adapter?.notifyItemChanged(preSize)
+                    adapter?.notifyItemChanged(preSize + headerSize)
                     // Insert new items
-                    adapter?.notifyItemRangeInserted(preSize, event.newUserInfoList.size - 1)
+                    adapter?.notifyItemRangeInserted(
+                        preSize + headerSize,
+                        event.newUserInfoList.size - 1
+                    )
                 }
             }
             is UserListViewModel.Event.LoadDataFailed -> {

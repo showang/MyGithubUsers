@@ -4,7 +4,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import me.showang.mygithubusers.util.async.AsyncDelegate
 
 class AsyncAndroid : AsyncDelegate {
     override fun background(func: suspend () -> Unit) {
@@ -13,5 +12,5 @@ class AsyncAndroid : AsyncDelegate {
         }
     }
 
-    override suspend fun updateUi(func: () -> Unit) = withContext(Dispatchers.Main) {}
+    override suspend fun updateUi(func: () -> Unit) = withContext(Dispatchers.Main) { func() }
 }
