@@ -16,6 +16,7 @@ import github.showang.transtate.core.ViewState
 import me.showang.mygithubusers.R
 import me.showang.mygithubusers.databinding.FragmentUserListBinding
 import me.showang.mygithubusers.model.UserInfo
+import me.showang.mygithubusers.ui.userdetail.UserDetailFragmentArgs
 import me.showang.mygithubusers.util.NavControllerHelper
 import me.showang.recyct.RecyctAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -58,8 +59,8 @@ class UserListFragment : Fragment() {
     }
 
     private fun onUserInfoItemClick(userInfo: UserInfo) {
-        //TODO: Item click actions
-        navHelper.navigate(findNavController(), R.id.action_user_list_to_detail)
+        val directions = UserListFragmentDirections.actionUserListToDetail(userInfo)
+        navHelper.navigate(findNavController(), directions)
     }
 
     private fun initViewBy(state: ViewState) {
@@ -114,8 +115,8 @@ class UserListFragment : Fragment() {
 
     private fun FragmentUserListBinding.initUserRecycler() {
         recycler.layoutManager = LinearLayoutManager(context)
-        recycler.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
         recycler.adapter = RecyctAdapter(userInfoList).apply {
+            registerHeader(HeaderItem())
             register(UserInfoItem()) { data, _ ->
                 (data as? UserInfo)?.let(::onUserInfoItemClick)
             }
